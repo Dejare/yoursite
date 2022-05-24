@@ -27,9 +27,9 @@ const Projectmain = () => {
         setLoad(true);
     };
     return (
-        <div>
+        <div className="w-screen">
             {/* {Noproject ? } */}
-            <header className="text-blue-600 p-12 flex flex-row justify-between">
+            <header className="text-blue-600 p-12 flex flex-row justify-between w-full">
                 <div>
                     Yoursite!
                 </div>

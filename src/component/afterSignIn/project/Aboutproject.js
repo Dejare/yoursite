@@ -34,7 +34,7 @@ const Aboutproject = (props, { display }) => {
             <div className="dashboard_left bg-blue-600 md:flex hidden flex-col">
                 <Left />
             </div>
-            <div className="center">
+            <div className="center formwidth">
             <header className="text-blue-600 p-12 flex flex-row justify-between">
                 <div>
                     Yoursite!
@@ -45,7 +45,7 @@ const Aboutproject = (props, { display }) => {
             </header>
                 <div className="md:m-24 m-4" ref={formData}>
                     <div>
-                        <h1 className="md:m-12 m-4 text-5xl mb-4 coolvetica text-blue-600">
+                        <h1 className="md:m-12 m-8 text-5xl mb-4 coolvetica text-blue-600">
                             Project form
                         </h1>
                         <p className="md:ml-12 m-4 md:mb-12 mb-4">
@@ -109,7 +109,7 @@ const Aboutproject = (props, { display }) => {
                         </div>
                         <div>
                             <h1>About</h1>
-                            <textarea
+                            <input
                                 name=""
                                 required
                                 id=""
@@ -118,7 +118,7 @@ const Aboutproject = (props, { display }) => {
                                 className="w-4/4 h-1/4 md:w-2/4 h-80 ml-8 mt-0 bg-gray-200 p-8 mt-8 rounded-lg focus:ring-2"
                                 onChange={(e) => setabout(e.target.value)}
                                 value={about}
-                            ></textarea>
+                            />
                         </div>
                         <button
                             type="submit"
