@@ -34,7 +34,7 @@ const Aboutproject = (props, { display }) => {
             <div className="dashboard_left bg-blue-600 md:flex hidden flex-col">
                 <Left />
             </div>
-            <div className="center formwidth">
+            <div className="center formWidth">
             <header className="text-blue-600 p-12 flex flex-row justify-between">
                 <div>
                     Yoursite!
