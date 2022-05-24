@@ -31,7 +31,7 @@ const Index = () => {
             <div className="homeTexts">
                 {" "}
                 <h3>{formValue.occupation}</h3>{" "}
-                <h1 className="px-40">
+                <h1 className="md:px-40">
                     {formValue.fullname}
                 </h1>{" "}
                 <div className="homeCta">
@@ -48,12 +48,6 @@ const Index = () => {
             </div>
 
 
-            <section id="about">
-                <div id="aboutsect">
-                        <h1>About me -</h1>
-                        
-                </div>
-            </section>
         </div>
 
         </>
