@@ -23,7 +23,8 @@ function dash() {
     const handleSubmit = async (e)=> {
         e.preventDefault()
         try {
-            await createUser(email, password, displayName)
+            await createUser(email, password)
+            history.push("/verifymail")
             dash()
         } catch (e) {
             // setError(`Error occured${e.code}`)/

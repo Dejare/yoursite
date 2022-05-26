@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { HiOutlineSun , HiOutlineMoon} from "react-icons/hi";
+import { AiOutlineTwitter, AiOutlineLinkedin, AiOutlineWhatsApp } from 'react-icons/ai'
 import Aboutproject from "../../afterSignIn/project/Aboutproject";
 import "./template.scss";
 import { FormContext } from "../../context/FormContext";
@@ -58,14 +59,14 @@ const Index = () => {
 
             <section id="about">
                     <div>
-                        <h1 className="coolvetica text-4xl head p-24">About me</h1>
+                        <h1 className="coolvetica text-4xl head p-12 md:p-24">About me</h1>
                     </div>
-                    <div className="flex flex-col md:flex-row justify-around px-12">
+                    <div className="flex flex-col md:flex-row justify-around md:px-12">
                     {/* image */}
                     <img src={img} alt="" className="aboutImg w-3/4 m-auto md:w-1/4 md:pr-24 py-24 md:py-0"/>
                     <div>
                         {/* text */}
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae sequi exercitationem ut culpa voluptas rerum omnis distinctio? Temporibus, saepe iure, enim similique totam dicta provident neque labore atque natus fuga!
+                        <p className="px-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae sequi exercitationem ut culpa voluptas rerum omnis distinctio? Temporibus, saepe iure, enim similique totam dicta provident neque labore atque natus fuga!
                         Necessitatibus itaque nisi excepturi dicta architecto facilis dolorum inventore quidem doloribus ab tempora, voluptatem minus doloremque tempore quia esse cumque. Est non nam impedit fugiat animi a distinctio consectetur ab?
                         Ratione accusantium accusamus veritatis quis culpa odio dolorum. Numquam voluptate quis illo? Quia, placeat ipsam nesciunt dolores, odio dolore aut dolor iste ab in nisi. Non earum voluptatum ipsum quisquam.
                         Repellat mollitia ut doloribus deleniti obcaecati nihil, totam nesciunt quasi voluptate ratione est saepe aliquam et voluptatem voluptatibus eaque quod incidunt harum eligendi quibusdam exercitationem. Necessitatibus, voluptatum vitae? Autem, voluptates!</p>
@@ -73,16 +74,22 @@ const Index = () => {
                     </div>
                 </section>
                 <section id="project">
-                <div className=" p-24">
+                <div className=" p-12">
                         <h1 className="coolvetica text-4xl head">My works</h1>
                         <p>Some people work smart, some work hard, BUT I DO BOTH</p>
                     </div>
                 </section>
                 <section >
-                    <div className="p-24">
+                    <div className="p-12">
                 <h1 className="coolvetica text-4xl head ">Contact me</h1>
                         <p>It'd be a pleasure to connect with you. Have a project for me? <br />These magic icons will link you directly to me</p>
                         </div>
+                        <div className="socialIcons flex flex-row p-12 pt-0 text-4xl">
+
+<a href={formValue.linkedin}><AiOutlineLinkedin className="mr-4"/></a>
+<a href={formValue.twitter}><AiOutlineTwitter className="mr-4"/></a>
+<a href={formValue.whatsapp}><AiOutlineWhatsApp/></a>
+                     </div>
                 </section>
         </div>
     );

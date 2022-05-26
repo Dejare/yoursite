@@ -12,6 +12,7 @@ import { BrowserRouter } from "react-router-dom";
 import Aboutproject from "./component/afterSignIn/project/Aboutproject";
 import Index from "./component/templates/template1/Index";
 import { FormContext } from "./component/context/FormContext";
+import Verifymail from "./component/auth/Verifymail";
 function App() {
     function addData(data) {
         console.log(data);
@@ -54,6 +55,9 @@ useEffect(() => {
                             </Route>
                             <Route path="/test">
                                 <Index />
+                            </Route>
+                            <Route path ="/verifymail">
+                                <Verifymail/>
                             </Route>
                         </FormContext.Provider>
                         <Route path="*">

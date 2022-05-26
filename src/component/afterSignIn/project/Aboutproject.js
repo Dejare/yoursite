@@ -17,6 +17,9 @@ const Aboutproject = (props, { display }) => {
             occupation: occupation,
             skills: skills,
             about: about,
+            linkedin: Linkedin,
+            whatsapp: Whatsapp,
+            twitter: Twitter
             // display: display
         };
         props.onAddData(data);
@@ -28,6 +31,9 @@ const Aboutproject = (props, { display }) => {
     const [occupation, setoccupation] = useState("");
     const [skills, setskills] = useState("");
     const [about, setabout] = useState("");
+    const [Twitter, setTwitter] = useState("")
+    const [Linkedin, setLinkedin] = useState("")
+    const [Whatsapp, setWhatsapp] = useState("")
     // console.log(Projectname);
     const formData = useRef();
 function enterrr(e) {
@@ -126,6 +132,41 @@ function enterrr(e) {
                                 value={about}
                             />
                         </div>
+                        <div>
+                            <h1>LinkedIn</h1>
+                            <input
+                                type="text"
+                                onChange={(e) => setLinkedin(e.target.value)}
+                                value={Linkedin}
+                                required
+                                className="w-4/4 md:w-2/4 h-10 ml-8 ml-8 bg-gray-200 p-8 mt-8 rounded-lg focus:ring-2"
+                                placeholder="Enter links to your account"
+                            />
+                        </div>
+                        <div>
+                            <h1>Whatsapp</h1>
+                            <input
+                                type="text"
+                                onChange={(e) => setWhatsapp(e.target.value)}
+                                value={Whatsapp}
+                                required
+                                className="w-4/4 md:w-2/4 h-10 ml-8 ml-8 bg-gray-200 p-8 mt-8 rounded-lg focus:ring-2"
+                                placeholder="Enter Number"
+                            />
+                        </div>
+                        <div>
+                            <h1>Twitter</h1>
+                            <input
+                                type="text"
+                                onChange={(e) => setTwitter(e.target.value)}
+                                value={Twitter}
+                                required
+                                className="w-4/4 md:w-2/4 h-10 ml-8 ml-8 bg-gray-200 p-8 mt-8 rounded-lg focus:ring-2"
+                                placeholder="Enter links to your account"
+                            />
+                        </div>
+                    
+                        
                         <button
                             type="submit"
                             className="cta bg-blue-600 text-white flex md:w-1/4 w-3/4 m-12 rounded-xl"
