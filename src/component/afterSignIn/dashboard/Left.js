@@ -6,6 +6,9 @@ const Left = () => {
     function dashboard() {
         history.push("/dashboard")
     }
+    function project() {
+        history.push("/project")
+    }
     return (
         <div>
             <div className="logo text-blue-600 text-center pt-8">Yoursite!</div>
@@ -14,7 +17,7 @@ const Left = () => {
                     <AiOutlineDashboard className='mr-4' />
                     <h2>Dashboard</h2>
                 </div>
-                <div className='flex flex-row align-center mt-12 text-gray-700 hover:text-blue-600'>
+                <div className='flex flex-row align-center mt-12 text-gray-700 hover:text-blue-600' onClick={project}>
                     <AiOutlineApartment className='mr-4' />
                     <h2>Projects</h2>
                 </div>

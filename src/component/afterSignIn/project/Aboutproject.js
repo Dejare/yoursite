@@ -4,6 +4,7 @@ import Left from "../dashboard/Left";
 import {HiMenuAlt3} from 'react-icons/hi'
 
 const Aboutproject = (props, { display }) => {
+    const testinput = useRef()
     const history = useHistory();
     function handleSubmit(e) {
         e.preventDefault();
@@ -29,6 +30,9 @@ const Aboutproject = (props, { display }) => {
     const [about, setabout] = useState("");
     // console.log(Projectname);
     const formData = useRef();
+function enterrr(e) {
+    (e== "Enter") ? console.log("enter") : console.log("no")
+}
     return (
         <div className="dashboard flex flex-row">
             <div className="dashboard_left bg-blue-600 md:flex hidden flex-col">
@@ -65,6 +69,8 @@ const Aboutproject = (props, { display }) => {
                                 value={Projectname}
                                 className="uppercase w-4/4 md:w-2/4 h-10 ml-8 mt-0 bg-gray-200 p-8 mt-8 rounded-lg focus:ring-2"
                                 required
+                                ref={testinput}
+                                onSubmit={enterrr}
                             />
                         </div>
                         <div>

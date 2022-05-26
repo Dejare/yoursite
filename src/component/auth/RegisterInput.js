@@ -1,6 +1,6 @@
 // import { async } from '@firebase/util';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import { useHistory } from "react-router-dom";
 import { UserAuth } from '../context/AuthContext';
 
@@ -10,7 +10,7 @@ const RegisterInput = (props) => {
     const [password, setPassword] = useState("");
     const [displayName, setUsername] = useState("");
     const [Error, setError] = useState("")
-
+    const errRef = useRef()
 
 const history = useHistory()
     const{ createUser }= UserAuth()
@@ -26,9 +26,21 @@ function dash() {
             await createUser(email, password, displayName)
             dash()
         } catch (e) {
-            setError(e.message)
-            console.log(e.message)
-            alert(e.message)    
+            // setError(`Error occured${e.code}`)/
+            // console.log)
+            // alert(e.message)    
+            errRef.current.style.display ="flex"
+            switch (e.code) {
+                case "auth/email-already-in-use":
+                    setError("Email exists, LOGIN please")
+                    break;
+                    case "auth/network-request-failed":
+                        setError("Network Error")
+                    break;
+                default: 
+                alert("Error occured")
+                    break;
+            }
         }
     }
 
@@ -45,6 +57,7 @@ function dash() {
         <p className='text-center '>Glad to have you on board</p>
 
         <form onSubmit={handleSubmit} className="flex flex-col">
+            <div className='errBox w-3/4 md:w-2/4 h-10 hidden bg-red-500 m-auto mt-8 text-white flex align-center justify-center content-center' ref={errRef}>{Error}</div>
         <input
                     className="w-3/4 md:w-2/4 h-10 m-auto bg-gray-200 p-8 mt-8 rounded-lg focus:ring-2"
                     type="text"
