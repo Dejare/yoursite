@@ -1,19 +1,30 @@
+import { sendPasswordResetEmail } from "firebase/auth";
 import React, {useState, useRef} from "react";
 import { useHistory } from "react-router-dom";
-import { UserAuth } from '../context/AuthContext';
+import { UserAuth } from "../../context/AuthContext";
+import { auth } from "./Firebase";
+
 // import {AiFillGoogleCircle} from 'react-icons/ai'
 export const Input = (props) => {
 
     const [Error, setError] = useState("")
 
-const {login} = UserAuth()
+const {login, resetPassword} = UserAuth()
 
 const errRef = useRef()
 
     function dash() {
         history.push("/dashboard");
-        window.location.reload()
     
+    }
+
+    const forgotPass = async () => {
+        try {
+            // write a line of code here to reset password
+            await sendPasswordResetEmail(email, auth);
+        } catch (e) {
+            alert(e.message)
+        }
     }
 
     const handleSubmit = async (e)=> {
@@ -32,8 +43,36 @@ const errRef = useRef()
                     case "auth/network-request-failed":
                         setError("Network Error")
                     break;
-                    case "auth/password-incorrect" :
+                    case "auth/wrong-password": 
                         setError("Wrong password.")
+                        break;
+                        case "auth/network-request-failed":
+                            setError("Network Error");
+                            break;
+                        case "auth/weak-password":
+                            setError("Password is too weak");
+                        break;
+                        case "auth/invalid-email":
+                            setError("Invalid email");
+                        break;
+                        case "auth/operation-not-allowed":
+                            setError("Operation not allowed");
+                        break;
+                        case "auth/user-disabled":
+                            setError("User disabled");
+                        break;
+                        case "auth/user-not-found":
+                            setError("User not found");
+                        break;
+                        case "auth/wrong-password":
+                            setError("Wrong password");
+                        break;
+                        case "auth/too-many-requests":
+                            setError("Too many requests");
+                        break;
+                        case "auth/requires-recent-login":
+                            setError("Requires recent login");
+                        break;
             }
         }
 
@@ -73,20 +112,17 @@ const errRef = useRef()
                     onChange={(e)=> setPassword(e.target.value)}
                 />
 
-                <button className=" w-3/4 md:w-2/4 m-auto  mt-2 text-blue-600 text-left">
-                    Forgot password
-                </button>
                 <button
                     type="submit"
                     className="w-3/4 md:w-2/4 mt-12 bg-blue-600 m-auto text-white p-4 rounded-lg"
                 >
                     Login
                 </button>
-                <button className="w-2/4 md:w-1/4 m-auto mt-8 bg-white shadow">
-                    Sign in with google.
-                </button>
+                
             </form>
-
+            <button className=" w-3/4 md:w-2/4 m-auto  mt-2 text-blue-600 text-left" onClick={forgotPass}>
+                    Forgot password
+                </button>
             <div className="mt-12">
                 Dont have an account? <br />{" "}
                 <button className="text-blue-600 underline" onClick={registerPage}>Sign Up</button>

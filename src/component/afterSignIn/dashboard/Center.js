@@ -1,15 +1,23 @@
 import React from 'react'
 // import {HiSearch} from 'react-icons/hi'
 import {AiOutlineSetting, AiOutlineBell, AiOutlinePlus} from 'react-icons/ai'
-import { UserAuth } from "../../context/AuthContext";
 import CenterCards from './CenterCards';
 import { useHistory } from 'react-router-dom';
+import { UserAuth } from '../../../context/AuthContext';
 const Center = () => {
-    const { user, logout } = UserAuth();
+    const { user } = UserAuth();
     const history = useHistory()
     function newProject() {
       history.push("/project")
     }
+
+   
+    //write a function to 
+    // if user is logged in, then show the dashboard
+    // if user is not logged in, then show the login page
+
+
+    console.log(user)
   return (
       <>
     <div className='flex flex-row justify-between'>
@@ -19,11 +27,11 @@ const Center = () => {
         <div className='flex flex-row m-12'>
             <AiOutlineBell className='mr-8 text-3xl text-gray-600'/>
             <AiOutlineSetting className='mr-8 text-3xl text-gray-600'/>
-            <h1 className='mr-8 text-3xl text-gray-600'>{user.email}</h1>
+            <h1 className='mr-8 text-3xl text-gray-600'></h1>
         </div>
     </div>
     <div className='md:m-12 md:mt-52 mt-12 m-4'>
-        <h1 className='text-5xl coolvetica m-12'>Welcome <br /> <span className='coolvetica'>{user.email}</span></h1>
+        <h1 className='text-5xl coolvetica m-12'>Welcome <br /> <span className='coolvetica'></span></h1>
         <h1 className='m-12 text-5xl coolvetica text-blue-600'>Ready to create an online presence?</h1>
         <button className='cta rounded-xl text-white bg-blue-600 ml-12' onClick={newProject}>New Project &rarr;</button>
     </div>

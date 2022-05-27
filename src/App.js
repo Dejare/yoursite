@@ -5,7 +5,6 @@ import Home from "./component/beforeLogin/Home";
 import Verify from "./component/auth/Verify";
 import Register from "./component/auth/Register";
 import Project from "./component/afterSignIn/project/Project";
-import { AuthContextProvider } from "./component/context/AuthContext";
 // import Main from "./component/main/Main";
 import Dashboard from "./component/afterSignIn/dashboard/Dashboard";
 import { BrowserRouter } from "react-router-dom";
@@ -13,6 +12,7 @@ import Aboutproject from "./component/afterSignIn/project/Aboutproject";
 import Index from "./component/templates/template1/Index";
 import { FormContext } from "./component/context/FormContext";
 import Verifymail from "./component/auth/Verifymail";
+import { AuthContextProvider } from "./context/AuthContext";
 function App() {
     function addData(data) {
         console.log(data);

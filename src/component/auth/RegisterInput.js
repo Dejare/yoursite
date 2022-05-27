@@ -1,65 +1,92 @@
 // import { async } from '@firebase/util';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import React, {useState, useRef} from 'react'
+
+import { sendEmailVerification } from "firebase/auth";
+import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import { UserAuth } from '../context/AuthContext';
+import Dashboard from "../afterSignIn/dashboard/Dashboard";
+import { UserAuth } from "../../context/AuthContext";
+import { auth } from "./Firebase";
+
 
 const RegisterInput = (props) => {
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [displayName, setUsername] = useState("");
-    const [Error, setError] = useState("")
-    const errRef = useRef()
+    const [Error, setError] = useState("");
+    const errRef = useRef();
 
-const history = useHistory()
-    const{ createUser }= UserAuth()
-function dash() {
-    history.push("/dashboard");
-    window.location.reload()
+    const history = useHistory();
+    const { createUser } = UserAuth();
 
-}
+    function dash() {
+         history.push("/dashboard");
+    }
 
-    const handleSubmit = async (e)=> {
-        e.preventDefault()
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            await createUser(email, password)
-            history.push("/verifymail")
+            await createUser(email, password);
             dash()
         } catch (e) {
             // setError(`Error occured${e.code}`)/
             // console.log)
-            // alert(e.message)    
-            errRef.current.style.display ="flex"
+            // alert(e.message)
+            errRef.current.style.display = "flex";
             switch (e.code) {
                 case "auth/email-already-in-use":
-                    setError("Email exists, LOGIN please")
+                    setError("Email exists, LOGIN please");
                     break;
-                    case "auth/network-request-failed":
-                        setError("Network Error")
+                case "auth/network-request-failed":
+                    setError("Network Error");
                     break;
-                default: 
-                alert("Error occured")
+                case "auth/weak-password":
+                    setError("Password is too weak");
+                break;
+                case "auth/invalid-email":
+                    setError("Invalid email");
+                break;
+                case "auth/operation-not-allowed":
+                    setError("Operation not allowed");
+                break;
+                case "auth/user-disabled":
+                    setError("User disabled");
+                break;
+                case "auth/user-not-found":
+                    setError("User not found");
+                break;
+                case "auth/wrong-password":
+                    setError("Wrong password");
+                break;
+                case "auth/too-many-requests":
+                    setError("Too many requests");
+                break;
+                case "auth/requires-recent-login":
+                    setError("Requires recent login");
+                break;
+                default:
+                    alert("Error occured");
                     break;
             }
         }
-    }
+    };
 
     function loginPage() {
         history.push("/signin");
         // alert("register now!")
     }
 
+    return (
+        <div>
+            <p className="text-center ">Glad to have you on board</p>
 
-
-  return (
-      
-    <div>
-        <p className='text-center '>Glad to have you on board</p>
-
-        <form onSubmit={handleSubmit} className="flex flex-col">
-            <div className='errBox w-3/4 md:w-2/4 h-10 hidden bg-red-500 m-auto mt-8 text-white flex align-center justify-center content-center' ref={errRef}>{Error}</div>
-        <input
+            <form onSubmit={handleSubmit} className="flex flex-col">
+                <div
+                    className="errBox w-3/4 md:w-2/4 h-10 hidden bg-red-500 m-auto mt-8 text-white flex align-center justify-center content-center"
+                    ref={errRef}
+                >
+                    {Error}
+                </div>
+                <input
                     className="w-3/4 md:w-2/4 h-10 m-auto bg-gray-200 p-8 mt-8 rounded-lg focus:ring-2"
                     type="text"
                     placeholder="Username..."
@@ -73,13 +100,13 @@ function dash() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-               
+
                 <input
                     className="w-3/4 md:w-2/4 h-10 m-auto bg-gray-200 p-8 mt-8 rounded-lg focus:ring-2"
                     type="password"
                     placeholder="Password..."
                     value={password}
-                    onChange={(e)=> setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
                 <button
                     type="submit"
@@ -93,10 +120,12 @@ function dash() {
             </form>
             <div className="mt-12 m-auto text-center">
                 Already have an account? <br />{" "}
-                <button className="text-blue-600 underline" onClick={loginPage}>Login</button>
+                <button className="text-blue-600 underline" onClick={loginPage}>
+                    Login
+                </button>
             </div>
-    </div>
-  )
-}
+        </div>
+    );
+};
 
-export default RegisterInput
+export default RegisterInput;
